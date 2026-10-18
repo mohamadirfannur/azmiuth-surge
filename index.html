@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Azimuth · Market Potential Agent</title>
+<meta name="description" content="Azimuth Market Potential Agent mockup for Surge — illustrative data.">
+<link rel="icon" type="image/png" href="assets/logo-surge-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="vendor/maplibre-gl.css" rel="stylesheet">
+<link href="tailwind.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-raleway text-grey-900 bg-white">
+
+<!-- ============ 1. LOGIN (mirrors pages/index.vue) ============ -->
+<section data-view="login" class="view">
+  <div class="flex p-6 h-screen gap-6">
+    <div class="hidden lg:block w-full h-full rounded-l-[50px] relative px-24 py-10 overflow-hidden bg-cover bg-center" style="background-image:url(assets/hero-image.jpg)">
+      <div class="absolute inset-0 bg-blue-900/60"></div>
+      <div class="relative z-10 flex flex-col h-full">
+        <h1 class="text-xl font-bold text-white">Azimuth</h1>
+        <div class="flex flex-col justify-center h-full">
+          <h1 class="text-6xl text-white leading-tight font-semibold">Geospatial Intelligence<br>for Network Planning.</h1>
+        </div>
+      </div>
+    </div>
+    <div class="w-full px-4 sm:px-16 xl:px-36 py-6">
+      <div class="flex flex-col h-full justify-center max-w-xl mx-auto">
+        <div class="space-y-4 mb-6">
+          <div class="flex items-center gap-3">
+            <h1 class="text-xl font-bold text-grey-900">Azimuth</h1>
+            <span class="text-grey-300">|</span>
+            <img src="assets/logo-surge-black.png" alt="Surge" class="h-6 w-auto">
+          </div>
+          <h2 class="text-4xl leading-tight">Geospatial Intelligence for Network Planning</h2>
+          <p class="text-sm text-grey-500">Sign In to continue your mapping journey with us!</p>
+        </div>
+        <form id="loginForm" class="flex flex-col space-y-4 mb-7 px-1 w-full" novalidate>
+          <label class="pill-input">
+            <svg viewBox="0 0 24 24" class="w-5 h-5 text-grey-400" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <input id="loginEmail" type="email" placeholder="Email Address" autocomplete="username">
+          </label>
+          <label class="pill-input">
+            <svg viewBox="0 0 24 24" class="w-5 h-5 text-grey-400" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            <input id="loginPass" type="password" placeholder="Password" autocomplete="current-password">
+            <button type="button" id="togglePass" class="text-grey-400 text-xs font-semibold">Show</button>
+          </label>
+          <p id="loginErr" class="hidden text-xs text-red-500">Signin information is incorrect. Make sure the email and password is correct and try again.</p>
+          <button type="submit" id="loginBtn" class="h-14 rounded-full bg-gradient-to-r from-brand-400 to-brand-500 text-white font-semibold flex items-center justify-center gap-2 hover:opacity-95">
+            <span>Sign In</span>
+          </button>
+          <p class="text-2xs text-grey-500 text-center">Demo mockup · any email and password works · data is illustrative</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. HERO (mirrors pages/hero.vue) ============ -->
+<section data-view="hero" class="view">
+  <div class="p-4 sm:p-10 min-h-screen">
+    <div class="bg-cover bg-center rounded-lg p-6 sm:p-14 shadow-xl min-h-[calc(100vh-5rem)]" style="background-image:url(assets/business-planning-0.png)">
+      <div class="flex items-center justify-between mb-12">
+        <h1 class="text-xl font-bold text-white">Azimuth</h1>
+        <button data-action="logout" class="px-10 py-2.5 text-sm font-medium text-brand-500 bg-white hover:bg-grey-100 rounded-sm shadow-md">Log Out</button>
+      </div>
+      <div class="mb-8">
+        <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6" id="helloName">Hello!</h2>
+        <p class="text-lg text-white/90 max-w-4xl leading-relaxed">Welcome to Azimuth — Geospatial Intelligence for Network Planning. Harness the power of geospatial intelligence to identify new market opportunities, evaluate demand potential, and design efficient, data-driven fiber network routes.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div data-go="planning" class="bg-white rounded-xl shadow-lg cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+          <div class="p-8 h-full flex flex-col justify-between">
+            <div>
+              <div class="flex items-center space-x-4 mb-6">
+                <div class="w-14 h-14 rounded-xs bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center shadow-lg">
+                  <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-bold text-grey-900">Business Planning</h2>
+                  <span class="bg-gradient-to-r from-green-500 to-green-600 text-xs text-white px-2 py-1 rounded-full inline-block mt-1 font-medium">Active</span>
+                </div>
+              </div>
+              <p class="text-grey-600 mb-6">Strategic tools for market analysis, route optimization, and comprehensive budget planning.</p>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-3 p-3 rounded-xs hover:bg-blue-100/50 transition-all duration-200 hover:translate-x-2 group">
+                  <div class="w-9 h-9 rounded-xs bg-blue-100 flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+                  <div class="flex-1"><h3 class="font-semibold text-grey-900 group-hover:text-blue-600">Market Potential Agent <span class="ml-1 text-2xs font-bold text-white bg-blue-500 rounded-full px-2 py-0.5 align-middle">NEW</span></h3><p class="text-sm text-grey-500">AI agents that rank kelurahan and cost FTTH vs FWA</p></div>
+                </div>
+                <div class="flex items-center space-x-3 p-3 rounded-xs hover:bg-blue-100/50 transition-all duration-200 hover:translate-x-2 group">
+                  <div class="w-9 h-9 rounded-xs bg-green-100 flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div>
+                  <div class="flex-1"><h3 class="font-semibold text-grey-900 group-hover:text-blue-600">Asset Management</h3><p class="text-sm text-grey-500">Optimize routes and manage optical budgets</p></div>
+                </div>
+              </div>
+            </div>
+            <button class="w-full mt-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-3 px-6 rounded-xs shadow-lg hover:shadow-xl">Explore Planning Tools</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg relative">
+          <div class="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">COMING SOON</div>
+          <div class="p-8 h-full flex flex-col">
+            <div class="flex items-center space-x-4 mb-6">
+              <div class="w-14 h-14 rounded-xs bg-gradient-to-br from-blue-600 to-blue-700 opacity-60 flex items-center justify-center shadow-lg"><svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke-width="2"/><path stroke-width="2" stroke-linecap="round" d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9l2.1 2.1m10 10 2.1 2.1M4.9 19.1 7 17m10-10 2.1-2.1"/></svg></div>
+              <h2 class="text-2xl font-bold text-grey-900">Business Operation</h2>
+            </div>
+            <p class="text-grey-600 mb-6">Advanced operational tools for real-time network management and automated workflow optimization.</p>
+            <div class="space-y-3 opacity-50">
+              <div class="flex items-center space-x-3 p-3 rounded-xs bg-grey-100"><div class="w-9 h-9 rounded-xs bg-grey-200"></div><div><h3 class="font-semibold text-grey-700">Integrated Data Sync</h3><p class="text-sm text-grey-500">Real-time network data synchronization</p></div></div>
+              <div class="flex items-center space-x-3 p-3 rounded-xs bg-grey-100"><div class="w-9 h-9 rounded-xs bg-grey-200"></div><div><h3 class="font-semibold text-grey-700">FTTH Mapping</h3><p class="text-sm text-grey-500">Visualize fiber network infrastructure</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. BUSINESS PLANNING (mirrors pages/landing/business-planning) ============ -->
+<section data-view="planning" class="view">
+  <div class="p-6 min-h-screen lg:h-screen gap-6 flex flex-col lg:flex-row">
+    <div id="bpHero" class="lg:w-1/2 min-h-[320px] lg:h-full rounded-sm relative p-10 overflow-hidden bg-cover bg-center transition-all duration-200" style="background-image:url(assets/business-planning-0.png)">
+      <div class="absolute w-[1200px] h-[1200px] bg-white/15 -bottom-[600px] -left-[400px] rounded-full blur-2xl"></div>
+      <div class="relative flex flex-col justify-between h-full">
+        <h1 class="text-xl font-bold text-white">Azimuth</h1>
+        <div class="flex flex-col justify-end space-y-4 py-10">
+          <h1 id="bpTitle" class="text-5xl xl:text-7xl font-medium text-white leading-tight">Business Planning</h1>
+          <p id="bpDesc" class="text-white font-medium text-[20px] leading-normal">Analyze market potential, optimize asset management, and assess FWA deployment opportunities.</p>
+        </div>
+      </div>
+    </div>
+    <div class="lg:w-1/2 px-2 lg:px-6 py-4 lg:py-10 flex flex-col justify-between overflow-y-auto">
+      <div>
+        <h1 class="text-4xl xl:text-[56px] font-medium xl:leading-[64px]">Business Planning</h1>
+        <p class="text-[18px] text-grey-500 mt-2">Analyze market potential, optimize asset management, and assess FWA deployment opportunities.</p>
+        <div class="mt-6 grid grid-cols-1 gap-3" id="bpCards"></div>
+      </div>
+      <div class="flex items-center justify-between mt-8">
+        <button data-go="hero" class="flex items-center gap-3 hover:opacity-70"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Back</button>
+        <button id="bpLocation" class="flex items-center gap-2 hover:opacity-70 text-sm"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="bpLocLabel">DKI Jakarta, Jakarta Pusat ... see more</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. MAP WORKSPACE (mirrors pages/map/[analysis]) ============ -->
+<section data-view="map" class="view">
+  <div class="fixed inset-0">
+    <div id="map" class="absolute inset-0"></div>
+
+    <!-- loading overlay -->
+    <div id="mapLoading" class="fixed inset-0 z-[60] flex items-center justify-center bg-grey-200/10 backdrop-blur-sm">
+      <div class="flex flex-col items-center gap-3 text-brand-500"><span class="spinner"></span><p class="text-sm font-medium">Preparing map experience…</p></div>
+    </div>
+
+    <!-- navbar -->
+    <div class="absolute top-6 left-6 right-6 z-30 flex items-start gap-3 pointer-events-none">
+      <div class="pointer-events-auto bg-white rounded-xs flex items-center h-12 px-3 gap-3 shadow-sm relative">
+        <button id="menuBtn" class="p-1 text-grey-700" title="Menu"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <img src="assets/logo-surge-black.png" alt="Surge" class="h-7 w-auto">
+        <div id="menuPop" class="hidden absolute top-14 left-0 w-60 bg-white rounded-xs shadow-xl ring-1 ring-grey-200 p-2 text-sm">
+          <button data-go="hero" class="menu-item">Home</button>
+          <button data-go="planning" class="menu-item">Business Planning</button>
+          <button data-action="report" class="menu-item">Report</button>
+          <hr class="my-1 border-grey-200">
+          <button data-action="logout" class="menu-item text-red-500">Log Out</button>
+        </div>
+      </div>
+      <div class="pointer-events-auto hidden md:flex items-center bg-white rounded-xs h-12 px-3 shadow-sm">
+        <p class="whitespace-nowrap font-medium text-black">Market Potential Agent <span class="text-grey-400 font-normal">· Tanah Abang + Setiabudi</span></p>
+      </div>
+      <div class="pointer-events-auto flex gap-2 items-center h-12">
+        <button class="nav-toggle on" data-panel="agent"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Agent</button>
+        <button class="nav-toggle" data-panel="layers"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></svg>Layers</button>
+        <button class="nav-toggle" data-panel="legend"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>Legends</button>
+      </div>
+      <div class="pointer-events-auto ml-auto flex items-center gap-2 h-12">
+        <button id="shareBtn" class="hidden sm:flex items-center gap-2 bg-brand-500 text-white text-sm font-medium px-3 h-9 rounded-xs hover:bg-brand-400">Share Map
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></button>
+        <button data-action="logout" title="Log out" class="h-9 w-9 rounded-full bg-brand-500 text-white flex items-center justify-center hover:bg-brand-400">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></button>
+      </div>
+    </div>
+
+    <!-- LEFT: agent panel -->
+    <aside id="pAgent" class="float-panel left-6 w-[22rem]">
+      <div class="flex justify-between items-center m-3">
+        <div>
+          <h2 class="text-grey-900 font-semibold flex items-center gap-2">Market Potential Agent <span class="text-2xs font-bold text-white bg-blue-500 rounded-full px-2">AI</span></h2>
+          <p class="text-2xs text-grey-600">Scout · Insight · Scoring · Costing</p>
+        </div>
+        <button class="panel-close" data-close="agent">×</button>
+      </div>
+      <hr class="mx-3 border-grey-200">
+      <div id="chatBody" class="flex-1 overflow-y-auto p-3 space-y-3"></div>
+      <div id="chatSuggest" class="px-3 pb-2 flex flex-wrap gap-1.5"></div>
+      <form id="chatForm" class="border-t border-grey-200 p-3 flex gap-2">
+        <input id="chatInput" class="flex-1 text-sm bg-grey-100 rounded-xs px-3 py-2 outline-none focus:ring-2 focus:ring-brand-200" placeholder="Ask the agent…" autocomplete="off">
+        <button class="bg-brand-500 text-white text-sm font-medium rounded-xs px-3 hover:bg-brand-400">Send</button>
+      </form>
+    </aside>
+
+    <!-- LEFT: layers panel -->
+    <aside id="pLayers" class="float-panel left-6 w-[18.5rem] hidden">
+      <div class="flex justify-between items-center m-3"><div><h2 class="text-grey-900 font-semibold">Layer Management</h2><p class="text-2xs text-grey-600">Toggle what the map shows</p></div><button class="panel-close" data-close="layers">×</button></div>
+      <hr class="mx-3 border-grey-200">
+      <div id="layerList" class="flex-1 overflow-y-auto p-3 space-y-2"></div>
+    </aside>
+
+    <!-- legend -->
+    <aside id="pLegend" class="float-panel w-[15.5rem] h-fit hidden" style="left:24.5rem">
+      <h2 class="p-3 text-xs font-semibold text-grey-800">Legend</h2>
+      <hr class="mx-3 border-grey-200">
+      <div id="legendBody" class="p-3 space-y-1.5 text-xs"></div>
+    </aside>
+
+    <!-- RIGHT: analysis panel -->
+    <aside id="pResult" class="float-panel right-6 w-[30.5rem] h-[calc(100%-12rem)]">
+      <div class="flex justify-between items-center m-3">
+        <div><h2 class="text-grey-900 font-semibold" id="resTitle">Analysis Result</h2><p class="text-2xs text-grey-600" id="resSub">Market Potential Agent result</p></div>
+        <span id="resBadge" class="text-2xs font-semibold px-2 py-0.5 rounded-full bg-grey-100 text-grey-600">Waiting</span>
+      </div>
+      <hr class="mx-3 border-grey-200">
+      <div id="resTabs" class="hidden px-3 pt-3 flex gap-1.5"></div>
+      <div id="resBody" class="flex-1 overflow-y-auto px-3 py-3"></div>
+    </aside>
+
+    <!-- bottom toolbar -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+      <div class="flex items-center gap-2 bg-white ring-1 ring-grey-700 rounded-xs p-2">
+        <div class="relative">
+          <button id="toolsBtn" class="tool-btn"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M18 17V9M13 17V5M8 17v-3"/></svg>Analytic Tools</button>
+          <div id="toolsPop" class="hidden absolute bottom-12 left-0 w-72 bg-white rounded-xs shadow-xl ring-1 ring-grey-200 p-2">
+            <p class="text-xs font-semibold px-2 pt-1">Analytic Tools</p>
+            <p class="text-2xs text-grey-500 px-2 pb-2">Geospatial analytic tools to draw insights from the map.</p>
+            <button class="menu-item" data-tool="run">Run Market Potential Agent</button>
+            <button class="menu-item" data-tool="weights">Adjust scoring weights</button>
+            <button class="menu-item" data-tool="boq">FTTH vs FWA BOQ</button>
+            <button class="menu-item" data-tool="buffer">Buffer 1 km around Surge assets</button>
+          </div>
+        </div>
+        <button id="reportBtn" data-action="report" class="tool-btn primary" disabled><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Generate Report</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. REPORT ============ -->
+<section data-view="report" class="view bg-grey-100 min-h-screen">
+  <div class="no-print sticky top-0 z-20 bg-white border-b border-grey-200">
+    <div class="max-w-5xl mx-auto px-4 h-16 flex items-center gap-3">
+      <button data-go="map" class="flex items-center gap-2 text-sm hover:opacity-70"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>Back to map</button>
+      <div class="ml-auto flex flex-wrap gap-2">
+        <button data-export="rank" class="btn-outline">Ranking .csv</button>
+        <button data-export="boq" class="btn-outline">BOQ .csv</button>
+        <button data-export="poi" class="btn-outline hidden sm:inline-flex">POIs .geojson</button>
+        <button id="printBtn" class="bg-brand-500 text-white text-sm font-medium px-4 h-9 rounded-xs hover:bg-brand-400">Download PDF</button>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <article id="reportDoc" class="bg-white rounded-xs shadow-sm p-6 sm:p-10"></article>
+  </div>
+</section>
+
+<!-- location filter modal (mirrors components/landing/ModalPlayground.vue) -->
+<div id="locModal" class="hidden fixed inset-0 z-[100] bg-black/40 flex items-center justify-center p-4">
+  <div class="bg-white rounded-xxs p-3 w-full max-w-md shadow-xl">
+    <div class="flex items-center justify-between pb-1">
+      <div><p class="text-[12px] font-medium">Location Filter</p><p class="text-2xs text-grey-500">Filter your specific location to run the map</p></div>
+      <button data-close-modal class="text-grey-300 hover:text-grey-600 text-xl leading-none px-1">×</button>
+    </div>
+    <div class="py-3 space-y-3" id="locBody"></div>
+    <div class="flex justify-end gap-2 pt-1">
+      <button data-close-modal class="btn-outline">Cancel</button>
+      <button id="locApply" class="bg-brand-500 text-white text-sm font-medium px-4 h-9 rounded-xxs hover:bg-brand-400">Apply and open map</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="vendor/maplibre-gl.js"></script>
+<script src="vendor/d3-delaunay.min.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
