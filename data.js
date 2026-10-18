@@ -3,7 +3,9 @@
    Everything the UI renders comes from this file.
    ========================================================== */
 window.MPA_DATA = {
-  user: { first_name: "Admin", last_name: "Surge", email: "admin@surge.co.id" },
+  user: { first_name: "Admin", last_name: "Surge", email: "admin@example.com" },
+  // Demo login (client-side only, not real auth)
+  login: { email: "admin@example.com", password: "admintest123" },
 
   area: {
     province: "DKI Jakarta",

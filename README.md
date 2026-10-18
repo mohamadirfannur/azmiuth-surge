@@ -6,7 +6,7 @@ Design tokens (colors, radius, Raleway, panel layout) follow `surge-main/web`. A
 ## Run locally (VS Code)
 - Install the **Live Server** extension → right-click `index.html` → *Open with Live Server*
 - or: `npx serve .`
-Any email + password works on the login screen.
+Login: `admin@example.com` / `admintest123` (set in `data.js` → `login`).
 
 ## Deploy to Vercel
 No build step needed.
@@ -33,4 +33,4 @@ npx tailwindcss@3.4.16 -c tailwind.config.js -i src/tailwind.input.css -o tailwi
 ## Notes
 - Basemap: MapTiler (`dataviz-light`). Set `MAPTILER_KEY` at the top of `app.js` (needs internet).
 - Kelurahan boundaries are simplified (Voronoi) and POI points are generated from counts in `data.js`. Swap in real GeoJSON later.
-- Login is fake (sessionStorage only). No backend.
+- Login is client-side only (credentials in `data.js`, session in sessionStorage). No backend — not real security.

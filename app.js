@@ -88,7 +88,7 @@ $("togglePass").onclick = () => { const p=$("loginPass"); p.type = p.type==="pas
 $("loginEmail").value = D.user.email;
 $("loginForm").addEventListener("submit", async e => {
   e.preventDefault();
-  const ok = $("loginEmail").value.trim() && $("loginPass").value;
+  const ok = $("loginEmail").value.trim().toLowerCase()===D.login.email && $("loginPass").value===D.login.password;
   $("loginErr").classList.toggle("hidden", !!ok);
   if(!ok) return;
   const b=$("loginBtn"); b.disabled=true; b.innerHTML='<span class="spinner sm text-white"></span>';
