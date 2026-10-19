@@ -1,4 +1,4 @@
-# Azimuth · Market Potential Agent — mockup for Surge
+# Cartogram · Market Potential Agent — mockup for Surge
 
 Static clickable mockup. Flow: **Login → Hero → Business Planning → Location filter → Map + Agent → Report (PDF/CSV)**.
 Design tokens (colors, radius, Raleway, panel layout) follow `surge-main/web`. All data is illustrative.

@@ -1,4 +1,4 @@
-/* Azimuth · Market Potential Agent — mockup app (vanilla JS, hash router) */
+/* Cartogram · Market Potential Agent — mockup app (vanilla JS, hash router) */
 (() => {
 const D = window.MPA_DATA;
 // MapTiler basemap — get a free key at https://cloud.maptiler.com/account/keys/
@@ -14,7 +14,7 @@ const store = {
   del(k){ try{ sessionStorage.removeItem(k); }catch(e){} },
 };
 let memAuth = false;
-const isAuthed = () => memAuth || store.get("azimuth-auth") === "1";
+const isAuthed = () => memAuth || store.get("cartogram-auth") === "1";
 
 function toast(msg){ const t=$("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),2000); }
 
@@ -76,7 +76,7 @@ document.addEventListener("click", e => {
   const g=e.target.closest("[data-go]"); if(g){ e.preventDefault(); closePops(); go(g.dataset.go); return; }
   const a=e.target.closest("[data-action]"); if(a){
     closePops();
-    if(a.dataset.action==="logout"){ memAuth=false; store.del("azimuth-auth"); go("login"); toast("Sign out successful"); }
+    if(a.dataset.action==="logout"){ memAuth=false; store.del("cartogram-auth"); go("login"); toast("Sign out successful"); }
     if(a.dataset.action==="report"){ if(a.disabled) return;
       if(mapReady && S.ran){ map.jumpTo({center:D.area.center,zoom:D.area.zoom}); let done=false; const fin=()=>{ if(!done){ done=true; go("report"); } }; map.once("idle",fin); setTimeout(fin,1500); }
       else go("report"); }
@@ -93,7 +93,7 @@ $("loginForm").addEventListener("submit", async e => {
   if(!ok) return;
   const b=$("loginBtn"); b.disabled=true; b.innerHTML='<span class="spinner sm text-white"></span>';
   await sleep(900);
-  memAuth=true; store.set("azimuth-auth","1");
+  memAuth=true; store.set("cartogram-auth","1");
   b.disabled=false; b.innerHTML="<span>Sign In</span>";
   go("hero");
 });
@@ -500,7 +500,7 @@ function renderReport(){
   const date=(S.ranAt||new Date()).toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
   $("reportDoc").innerHTML = `<div class="rep">
     <div class="flex items-center justify-between border-b border-grey-200 pb-4 mb-6">
-      <div class="flex items-center gap-3"><span class="text-lg font-bold">Azimuth</span><span class="text-grey-300">|</span><img src="assets/logo-surge-black.png" class="h-6" alt="Surge"></div>
+      <div class="flex items-center gap-3"><span class="text-lg font-bold">Cartogram</span><span class="text-grey-300">|</span><img src="assets/logo-surge-black.png" class="h-6" alt="Surge"></div>
       <span class="text-2xs font-semibold px-2 py-1 rounded-full bg-yellow-100 text-yellow-700">ILLUSTRATIVE DATA</span>
     </div>
     <p class="lbl">Market Potential Agent · Report</p>
