@@ -500,7 +500,7 @@ function renderReport(){
   const date=(S.ranAt||new Date()).toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
   $("reportDoc").innerHTML = `<div class="rep">
     <div class="flex items-center justify-between border-b border-grey-200 pb-4 mb-6">
-      <div class="flex items-center gap-3"><span class="text-lg font-bold">Cartogram</span><span class="text-grey-300">|</span><img src="assets/logo-surge-black.png" class="h-6" alt="Surge"></div>
+      <img src="assets/logo-cartogram.png" class="h-8" alt="Cartogram Platform">
       <span class="text-2xs font-semibold px-2 py-1 rounded-full bg-yellow-100 text-yellow-700">ILLUSTRATIVE DATA</span>
     </div>
     <p class="lbl">Market Potential Agent · Report</p>
