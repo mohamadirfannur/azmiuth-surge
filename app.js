@@ -99,7 +99,7 @@ $("loginForm").addEventListener("submit", async e => {
 });
 
 /* ---------------- 2. hero ---------------- */
-function renderHero(){ $("helloName").textContent = `Hello, ${D.user.first_name} ${D.user.last_name}!`; }
+function renderHero(){ $("helloName").textContent = "Welcome back!"; }
 
 /* ---------------- 3. business planning ---------------- */
 const BP = [
@@ -317,7 +317,7 @@ let chatInit=false;
 function addMsg(cls,html){ const d=document.createElement("div"); d.className="msg "+cls; d.innerHTML=html; $("chatBody").appendChild(d); $("chatBody").scrollTop=1e6; return d; }
 function renderChat(){
   if(chatInit) return; chatInit=true;
-  addMsg("agent",`<div class="who">Market Potential Agent</div>Hi ${D.user.first_name}. Tell me which area and which customers you want to target. I will find the businesses, rank every kelurahan, and cost FTTH vs FWA.`);
+  addMsg("agent",`<div class="who">Market Potential Agent</div>Hi there. Tell me which area and which customers you want to target. I will find the businesses, rank every kelurahan, and cost FTTH vs FWA.`);
   setSuggest();
 }
 function setSuggest(){
